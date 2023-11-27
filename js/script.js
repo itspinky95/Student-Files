@@ -76,3 +76,22 @@ document.body.addEventListener('click', (e) => {
         }
     }
 });
+
+
+// Add search form to HTML
+const searchContainer = document.querySelector('.search-container');
+searchContainer.innerHTML = `
+    <form action="#" method="get">
+        <input type="search" id="search-input" class="search-input" placeholder="Search...">
+        <input type="submit" value="&#x1F50D;" id="search-submit" class="search-submit">
+    </form>
+`;
+
+// Add event listener to search form
+document.querySelector('#search-input').addEventListener('input', (e) => {
+    const searchTerm = e.target.value.toLowerCase();
+    const filteredUsers = users.filter(user =>
+        `${user.name.first} ${user.name.last}`.toLowerCase().includes(searchTerm)
+    );
+    displayUsers(filteredUsers);
+});
