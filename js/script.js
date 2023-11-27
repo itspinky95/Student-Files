@@ -38,7 +38,8 @@ function displayUsers(users) {
         const html = `
       <div class="modal-container">
         <div class="modal">
-
+        <button id="modal-prev" class="modal-prev btn">Prev</button>
+        <button id="modal-next" class="modal-next btn">Next</button>
             <button id="close-modal" class="modal-close-btn"><strong>X</strong></button>
             <div class="modal-info-container">
                 <img src="${user.picture.large}" alt="${user.name.first} ${user.name.last}">
@@ -52,8 +53,21 @@ function displayUsers(users) {
       </div>
     `;
         document.body.insertAdjacentHTML('beforeend', html);
-
-        
+        // Add event listeners to prev and next buttons
+        document.querySelector('#modal-prev').addEventListener('click', () => {
+            const index = users.indexOf(user);
+            if (index > 0) {
+                document.querySelector('.modal-container').remove();
+                displayModal(users[index - 1], users);
+            }
+        });
+        document.querySelector('#modal-next').addEventListener('click', () => {
+            const index = users.indexOf(user);
+            if (index < users.length - 1) {
+                document.querySelector('.modal-container').remove();
+                displayModal(users[index + 1], users);
+            }
+        });
 
 
         // Add event listener to user cards
@@ -66,17 +80,6 @@ function displayUsers(users) {
         });
     }
 }
-
-// Event delegation for close button
-document.body.addEventListener('click', (e) => {
-    if (e.target.id === 'close-modal' || e.target.parentElement.id === 'close-modal') {
-        const modal = document.querySelector('.modal-container');
-        if (modal) {
-            modal.remove();
-        }
-    }
-});
-
 
 // Add search form to HTML
 const searchContainer = document.querySelector('.search-container');
@@ -95,3 +98,14 @@ document.querySelector('#search-input').addEventListener('input', (e) => {
     );
     displayUsers(filteredUsers);
 });
+
+// Event delegation for close button
+document.body.addEventListener('click', (e) => {
+    if (e.target.id === 'close-modal' || e.target.parentElement.id === 'close-modal') {
+        const modal = document.querySelector('.modal-container');
+        if (modal) {
+            modal.remove();
+        }
+    }
+});
+
