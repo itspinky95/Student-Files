@@ -109,3 +109,34 @@ document.body.addEventListener('click', (e) => {
     }
 });
 
+const toggleButton = document.querySelector('.mode-toggle');
+const body = document.body;
+
+toggleButton.addEventListener('click', () => {
+    // Toggle dark mode class on the body element
+    body.classList.toggle('dark-mode');
+
+    // Toggle icons
+    const sunIcon = toggleButton.querySelector('.fa-sun');
+    const moonIcon = toggleButton.querySelector('.fa-moon');
+    sunIcon.classList.toggle('hidden');
+    moonIcon.classList.toggle('hidden');
+
+    // Save the user's preference in local storage
+    if (body.classList.contains('dark-mode')) {
+        localStorage.setItem('theme', 'dark');
+    } else {
+        localStorage.setItem('theme', 'light');
+    }
+});
+
+// Check for user's preference and apply it
+const userPreference = localStorage.getItem('theme');
+if (userPreference === 'dark') {
+    body.classList.add('dark-mode');
+    // Hide the sun icon (light mode) initially
+    toggleButton.querySelector('.fa-sun').classList.add('hidden');
+} else {
+    // Hide the moon icon (dark mode) initially
+    toggleButton.querySelector('.fa-moon').classList.add('hidden');
+}

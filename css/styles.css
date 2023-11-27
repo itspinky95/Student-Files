@@ -17,6 +17,8 @@ body {
     font-family: "Nunito", sans-serif;
     text-align: center;
     background: rgba(235, 235, 235, 0.9);
+    background-color: white;
+    color: black;
 }
 
 header {
@@ -60,7 +62,87 @@ header h1 {
     border: 1px solid rgba(50, 50, 50, 0.9);
 }
 
+/* Add styles for the mode toggle button */
+.mode-toggle {
+    cursor: pointer;
+    position: absolute; /* Add absolute positioning */
+    top: 10px; /* Adjust the top position as needed */
+    left: 10px; /* Adjust the left position as needed */
+    z-index: 999; /* Set a high z-index to ensure it's on top of other content */
+}
 
+.mode-toggle i {
+    font-size: 24px; /* Adjust the size as needed */
+    margin: 0 10px; /* Add spacing between icons */
+}
+
+/* Styles for light mode */
+.light-mode .mode-toggle .fa-sun {
+    color: #FFD700; /* Set the color for the sun icon in light mode */
+}
+
+/* Styles for dark mode */
+.dark-mode .mode-toggle .fa-moon {
+    color: #FFFFFF; /* Set the color for the moon icon in dark mode */
+}
+
+/* Hide the moon icon (dark mode) initially */
+.mode-toggle .fa-moon.hidden {
+    display: none;
+}
+
+/* Hide the sun icon (light mode) initially */
+.mode-toggle .fa-sun.hidden {
+    display: none;
+}
+
+/* Dark mode styles */
+body.dark-mode {
+    background-color: black;
+    color: white;
+}
+
+/* Update text and box colors for dark mode */
+body.dark-mode header h1 {
+    color: rgba(200, 200, 200, 0.9); /* Change the header text color */
+}
+
+body.dark-mode .search-input,
+body.dark-mode .search-submit {
+    border-color: rgba(100, 100, 100, 0.9); /* Change the input and button border color */
+}
+
+body.dark-mode .search-submit {
+    background: rgba(50, 50, 50, 0.9); /* Change the button background color */
+}
+
+/* Update text color for cards in dark mode */
+body.dark-mode .card-text {
+    color: rgba(200, 200, 200, 0.7); /* Change the card text color */
+}
+
+/* Update background and border colors for cards in dark mode */
+body.dark-mode .card {
+    background: rgba(50, 50, 50, 0.9); /* Change the card background color */
+    border: 1px solid rgba(100, 100, 100, 0.3); /* Change the card border color */
+}
+
+/* Update text color for modal in dark mode */
+body.dark-mode .modal-text {
+    color: rgba(200, 200, 200, 0.7); /* Change the modal text color */
+}
+
+/* Update background and border colors for modal in dark mode */
+body.dark-mode .modal {
+    background: rgba(50, 50, 50, 0.9); /* Change the modal background color */
+    border: 1px solid rgba(100, 100, 100, 0.3); /* Change the modal border color */
+}
+
+/* Update button colors in dark mode */
+body.dark-mode .modal-btn-container .btn {
+    background: rgba(100, 100, 100, 0.8); /* Change the button background color */
+    color: rgba(255, 255, 255, 0.9); /* Change the button text color */
+}
 
 
 /* ===================================== 
